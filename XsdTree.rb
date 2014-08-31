@@ -103,7 +103,7 @@ class CdmTree
 
 		$out.close
 
-		file = File.new("file.txt", "w")
+		file = File.new(@file.gsub("\.xsd","\.txt"), "w")
 
 		File.foreach("out.txt") { |line|
 			file.puts line unless line.chomp.empty?
