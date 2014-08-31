@@ -92,11 +92,13 @@ class CdmTree
 
 		cdmTree = CdmTree.new
 
-		@file = ARGV[0]
-		@directory = ARGV[1]
+		@directory = Dir.pwd + "/"
+		@file = @directory + ARGV[0]
 
-		cdmTree.addNodes(@directory+"common.xsd")
 		cdmTree.addNodes(@file)
+		if File.exists?(@directory+"common.xsd")
+			cdmTree.addNodes(@directory+"common.xsd")
+		end
 
 		$out.puts $element['name']
 		cdmTree.addChilds($element, ' ')
